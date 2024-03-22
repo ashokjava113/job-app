@@ -2,6 +2,7 @@ package com.java.jobapp.job.controller;
 
 import com.java.jobapp.job.model.Job;
 import com.java.jobapp.job.service.JobService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,10 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 public class JobController {
 
     @Autowired
-    private JobService jobService;
+    private final JobService jobService;
 
     @GetMapping("/jobs")
     public ResponseEntity<List<Job>> getJobs(){
@@ -49,6 +51,16 @@ public class JobController {
             return new ResponseEntity<>("Job deleted successfully.",HttpStatus.OK);
         }else{
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PutMapping("/jobs/{id}")
+    public ResponseEntity<String> updateJob(@PathVariable long id, @RequestBody Job updateJob){
+        boolean isJobUpdated = jobService.updateJob(id, updateJob);
+        if(isJobUpdated){
+            return  new ResponseEntity<>("Job updated successfully.",HttpStatus.OK);
+        }else {
+            return new ResponseEntity<>("Job not updated",HttpStatus.NOT_FOUND);
         }
     }
 }
