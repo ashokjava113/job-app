@@ -3,6 +3,7 @@ package com.java.jobapp.company.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.java.jobapp.job.model.Job;
+import com.java.jobapp.review.model.Review;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,4 +26,8 @@ public class Company {
     @JsonIgnoreProperties("company")
     @OneToMany(mappedBy = "company")
     private List<Job> jobs;
+
+    @JsonIgnoreProperties("company")
+    @OneToMany
+    private List<Review> reviews;
 }
