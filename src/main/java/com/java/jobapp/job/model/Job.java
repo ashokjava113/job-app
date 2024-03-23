@@ -1,5 +1,8 @@
 package com.java.jobapp.job.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.java.jobapp.company.model.Company;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -18,4 +21,7 @@ public class Job {
     private String maxSalary;
     private String location;
 
+    @JsonIgnoreProperties("jobs")
+    @ManyToOne
+    private Company company;
 }

@@ -8,7 +8,7 @@ public interface JobService {
 
     public List<Job> getJobs();
 
-    public String createJob(Job job);
+    public Job createJob(Job job);
 
     boolean deleteJob(Long id);
 

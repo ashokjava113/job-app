@@ -24,9 +24,8 @@ public class JobServiceImpl implements JobService{
     }
 
     @Override
-    public String createJob(Job job) {
-        jobRepository.save(job);
-        return "Job added successfully.";
+    public Job createJob(Job job) {
+        return jobRepository.save(job);
     }
 
     @Override
