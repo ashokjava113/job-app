@@ -2,21 +2,22 @@ package com.java.jobapp.job.controller;
 
 import com.java.jobapp.job.model.Job;
 import com.java.jobapp.job.service.JobService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequiredArgsConstructor
 public class JobController {
 
     @Autowired
     private final JobService jobService;
+
+    public JobController(JobService jobService) {
+        this.jobService = jobService;
+    }
 
     @GetMapping("/jobs")
     public ResponseEntity<List<Job>> getJobs(){

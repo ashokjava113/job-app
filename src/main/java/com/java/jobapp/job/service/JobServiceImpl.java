@@ -2,21 +2,21 @@ package com.java.jobapp.job.service;
 
 import com.java.jobapp.job.model.Job;
 import com.java.jobapp.job.repository.JobRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
 public class JobServiceImpl implements JobService{
 
 //    private List<Job> jobs = new ArrayList<>();
 
     private final JobRepository jobRepository;
+
+    public JobServiceImpl(JobRepository jobRepository) {
+        this.jobRepository = jobRepository;
+    }
 
     @Override
     public List<Job> getJobs() {

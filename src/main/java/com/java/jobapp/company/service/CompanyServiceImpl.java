@@ -2,17 +2,19 @@ package com.java.jobapp.company.service;
 
 import com.java.jobapp.company.model.Company;
 import com.java.jobapp.company.repository.CompanyRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
 public class CompanyServiceImpl implements CompanyService{
 
     private final CompanyRepository companyRepository;
+
+    public CompanyServiceImpl(CompanyRepository companyRepository) {
+        this.companyRepository = companyRepository;
+    }
 
     @Override
     public Company createCompany(Company company) {
